@@ -12,12 +12,17 @@ function App(){
   const [get, setGet] = useState(0)
   // Detect Keydown on physical keyboard
   useEffect(() => {
-    window.addEventListener('keydown', onHandleKeyDown);
+    // window.addEventListener('keydown', onHandleKeyDown);
+    window.addEventListener('keydown', deny());
     return () => {
-      window.removeEventListener('keydown', onHandleKeyDown);
+      // window.removeEventListener('keydown', onHandleKeyDown);
+      window.removeEventListener('keydown', deny());
     };
   }, []);
   // Function
+  const deny = ()=>{
+    console.error("YOU CAN NOT USE KEYBOARD TO ENTER DATA")
+  }
   const onHandleCal = ()=>{ //Handle clicking math symbol on screen
     try{
       setShow(get);
@@ -105,7 +110,7 @@ function App(){
       </div>
       <div className='my-5 container border border-danger rounded'>
         <h3 className='text-danger'>WARNING:</h3>
-        <div>This app is under developing. You may get unexpected warnings or errors when you use <strong>Physical keyboard</strong> to enter the data. Please accept my sincere apology for this inconvenience! I am gonna fix these problems as soon as possible.</div>
+        <div>This app is under developing. To prevent you from getting unexpected warnings or errors when you use <strong>Physical keyboard</strong> to enter the data, So I have to turn this feature off. Please accept my sincere apology for this inconvenience! I am gonna fix these problems as soon as possible.</div>
         <h1>🙇‍♂️</h1>
       </div>
     </React.Fragment>
